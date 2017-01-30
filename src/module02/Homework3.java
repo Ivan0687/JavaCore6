@@ -13,7 +13,7 @@ public class Homework3 {
         // на много легче эти два массива обьединить в Hashmap
 
         String ownerName = "Jane";
-        double withdrawal = 490;
+        double withdrawal = 100;
         double commision = withdrawal * 0.05;
 
         for (int i = 0; i < ownerNames.length; i++) {
