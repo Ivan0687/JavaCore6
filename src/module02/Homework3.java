@@ -12,7 +12,7 @@ public class Homework3 {
 
         // на много легче эти два массива обьединить в Hashmap
 
-        String ownerName = "Oww";
+        String ownerName = "Jane";
         double withdrawal = 490;
         double commision = withdrawal * 0.05;
 
@@ -24,7 +24,7 @@ public class Homework3 {
                     System.out.println(ownerName + " NO");
 
                 else {
-                    balances[i] -= withdrawal - commision;
+                    balances[i] -= (int) (withdrawal + commision);
                     System.out.println(ownerName + " OK " + commision + " " + balances[i]);
                 }
 
