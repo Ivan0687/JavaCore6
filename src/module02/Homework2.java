@@ -16,7 +16,7 @@ public class Homework2 {
             System.out.println("NO");
 
         else {
-            balance -= withdrawal - commision;
+            balance -= (withdrawal - commision);
             System.out.println("OK " + commision + " " + balance);
         }
 
