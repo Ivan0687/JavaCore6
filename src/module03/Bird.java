@@ -5,7 +5,7 @@ package module03;
  */
 public class Bird {
 
-    private static void sing (String[] lyrics){
+    public static void sing (String[] lyrics){
 
         for (String lyric : lyrics) {
 
