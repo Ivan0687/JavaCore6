@@ -26,11 +26,8 @@ public class Solution {
 
         SpecialStudent firstSpecialStudent = new SpecialStudent("John", "Doe", 3);
         SpecialStudent secondSpecialStudent = new SpecialStudent("Roe", new Course[]{thirdCourse, fifthCourse});
+        SpecialStudent thirdSpecialStudent = new SpecialStudent("John", "Doe", 3, 561684);
 
-        SpecialStudent thirdSpecialStudent = new SpecialStudent("Petrov", "Petr", 3,
-                new Course[]{firstCourse, secondCourse, thirdCourse, fourthCourse,  fifthCourse}, 25, "GoIt", 100, 2124791, 95);
-
-        SpecialStudent thirdSpecialStudentSecretKey = new SpecialStudent(456765);
     }
 
 }
