@@ -37,46 +37,62 @@ public class Main {
 
         BankSystemImpl bankSystem = new BankSystemImpl();
 
+        System.out.println("Users before operations:");
+        System.out.println(userUSBankUSD.toString());
+        System.out.println(userUSBankUSD.toString());
+        System.out.println(userEUBankUSD.toString());
+        System.out.println(userEUBankEUR.toString());
+        System.out.println(userChinaBankUSD.toString());
+        System.out.println(userChinaBankEUR.toString());
+        System.out.println();
+
+
+        System.out.println("Operations:");
+        System.out.println();
 
         bankSystem.withdrawOfUser(userUSBankUSD, 500);
         bankSystem.fundUser(userUSBankUSD, 200);
         bankSystem.transferMoney(userUSBankUSD, userEUBankUSD, 100);
         bankSystem.paySalary(userUSBankUSD);
-        System.out.println(userUSBankUSD.toString());
-
+        System.out.println();
 
         bankSystem.withdrawOfUser(userUSBankEUR, 200);
         bankSystem.fundUser(userUSBankEUR, 100);
         bankSystem.transferMoney(userUSBankEUR, userEUBankEUR, 300);
         bankSystem.paySalary(userUSBankEUR);
-        System.out.println(userUSBankEUR.toString());
-
+        System.out.println();
 
         bankSystem.withdrawOfUser(userEUBankUSD, 500);
         bankSystem.fundUser(userEUBankUSD, 200);
         bankSystem.transferMoney(userEUBankUSD, userEUBankUSD, 100);
         bankSystem.paySalary(userEUBankUSD);
-        System.out.println(userEUBankUSD.toString());
-
+        System.out.println();
 
         bankSystem.withdrawOfUser(userEUBankEUR, 200);
         bankSystem.fundUser(userEUBankEUR, 100);
         bankSystem.transferMoney(userEUBankEUR, userEUBankEUR, 300);
         bankSystem.paySalary(userEUBankEUR);
-        System.out.println(userEUBankEUR.toString());
-
+        System.out.println();
 
         bankSystem.withdrawOfUser(userChinaBankUSD, 500);
         bankSystem.fundUser(userChinaBankUSD, 200);
         bankSystem.transferMoney(userChinaBankUSD, userEUBankUSD, 100);
         bankSystem.paySalary(userChinaBankUSD);
-        System.out.println(userChinaBankUSD.toString());
-
+        System.out.println();
 
         bankSystem.withdrawOfUser(userChinaBankEUR, 200);
         bankSystem.fundUser(userChinaBankEUR, 11100);
         bankSystem.transferMoney(userChinaBankEUR, userChinaBankEUR, 300);
         bankSystem.paySalary(userChinaBankEUR);
+        System.out.println();
+
+
+        System.out.println("Users after operations:");
+        System.out.println(userUSBankUSD.toString());
+        System.out.println(userUSBankUSD.toString());
+        System.out.println(userEUBankUSD.toString());
+        System.out.println(userEUBankEUR.toString());
+        System.out.println(userChinaBankUSD.toString());
         System.out.println(userChinaBankEUR.toString());
 
     }

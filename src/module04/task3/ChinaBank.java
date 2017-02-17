@@ -59,11 +59,11 @@ public class ChinaBank extends Bank{
     @Override
     public int getMonthlyRate() {
 
-        double rate = 0;
+        int rate = 0;
 
         switch (getCurrency()){
             case USD:
-                rate = getTotalCapital() * 0.01;
+                rate = 1;
                 break;
 
             case EUR:
@@ -71,32 +71,32 @@ public class ChinaBank extends Bank{
                 break;
         }
 
-        return (int) rate;
+        return rate;
     }
 
     @Override
     public int getCommission(int summ) {
 
-        double commision = 0;
+        int commission = 0;
 
         switch (getCurrency()){
             case USD:
                 if (summ < 1000)
-                    commision = summ * 0.03;
+                    commission = 3;
                 else
-                    commision = summ * 0.02;
+                    commission = 2;
 
                 break;
 
             case EUR:
                 if (summ < 1000)
-                    commision = summ * 0.1;
+                    commission = 10;
                 else
-                    commision = summ * 0.11;
+                    commission = 11;
 
                 break;
         }
 
-        return (int) commision;
+        return commission;
     }
 }

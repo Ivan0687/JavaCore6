@@ -11,45 +11,101 @@ public class BankSystemImpl implements BankSystem{
     @Override
     public void withdrawOfUser(User user, int amount) {
 
-        if (amount < user.getBank().getLimitOfWithdrawal()){
-            user.setBalance(user.getBalance() - amount - user.getBank().getCommission(amount));
-            user.getBank().setTotalCapital(user.getBank().getTotalCapital() + user.getBank().getCommission(amount));
-        } else {
-            System.out.println("Exceeded limit of withdrawal");
+        System.out.println("User " + user.getName() + " is trying to withdraw " + amount + " " + user.getBank().getCurrency());
+        if (amount >= 0) {
+            if (amount < user.getBank().getLimitOfWithdrawal()) {
+
+                // вывод баланса можно было бы сделать методом у юзера например как user.showBalance
+                System.out.println("User " + user.getName() + ": balance = " + user.getBalance() +" "+ user.getBank().getCurrency());
+
+                System.out.println("User " + user.getName() +  " withdraws " + amount +" "+ user.getBank().getCurrency() +
+                        " with commission " + amount * user.getBank().getCommission(amount)/100 +" "+ user.getBank().getCurrency());
+
+                user.setBalance(user.getBalance() - amount - amount * user.getBank().getCommission(amount)/100);
+
+                System.out.println("User " + user.getName() + ": balance = " + user.getBalance() + user.getBank().getCurrency());
+
+                // комиссия уходит банку
+                user.getBank().setTotalCapital(user.getBank().getTotalCapital() + user.getBank().getCommission(amount)/100);
+            } else {
+                System.out.println("User " + user.getName() + " has exceeded the limit of withdrawal, limit = " + user.getBank().getLimitOfWithdrawal());
+            }
+        } else{
+            System.out.println("User " + user.getName() + " is trying to withdraw negative amount");
         }
+        System.out.println();
     }
 
     @Override
     public void fundUser(User user, int amount) {
 
-        if (amount <  user.getBank().getLimitOfFunding()){
-            user.setBalance(user.getBalance() + amount);
-        } else {
-            System.out.println("Exceeded limit of funding");
+        System.out.println("User " + user.getName() + " is trying to fund " + amount + " " + user.getBank().getCurrency());
+        if (amount >=0) {
+            if (amount < user.getBank().getLimitOfFunding()) {
+                System.out.println("User " + user.getName() + ": balance = " + user.getBalance() +" "+ user.getBank().getCurrency());
+
+                System.out.println("User " + user.getName() +  " funds " + amount +" "+ user.getBank().getCurrency());
+
+                user.setBalance(user.getBalance() + amount);
+
+                System.out.println("User " + user.getName() + ": balance = " + user.getBalance() +" "+ user.getBank().getCurrency());
+
+            } else {
+                System.out.println("User " + user.getName() + " has exceeded limit of funding, limit = " + user.getBank().getLimitOfFunding());
+            }
+        } else{
+            System.out.println("User " + user.getName() + " is trying to fund negative amount");
         }
+        System.out.println();
 
     }
 
     @Override
     public void transferMoney(User fromUser, User toUser, int amount) {
 
-        if (amount < fromUser.getBank().getLimitOfWithdrawal()){
-            if (amount <  toUser.getBank().getLimitOfFunding()){
-                fromUser.setBalance(fromUser.getBalance() - amount - fromUser.getBank().getCommission(amount));
-                toUser.setBalance(toUser.getBalance() + amount);
-                fromUser.getBank().setTotalCapital(fromUser.getBank().getTotalCapital() + fromUser.getBank().getCommission(amount));
+        /** Здесь можно было бы еще устроить механику перевода с разными валютами пользователей,
+         * но для этого я бы сделал еще один класс с курсами валют*/
+
+        System.out.println("User " + fromUser.getName() + " is trying to transfer " +
+                amount + " " + fromUser.getBank().getCurrency() + " to user " + toUser.getName());
+
+        if (amount >= 0) {
+            if (amount < fromUser.getBank().getLimitOfWithdrawal()) {
+                if (amount < toUser.getBank().getLimitOfFunding()) {
+
+                    System.out.println("User " + fromUser.getName() + ": balance = " + fromUser.getBalance() +" "+ fromUser.getBank().getCurrency());
+                    System.out.println("User " + toUser.getName() + ": balance = " + toUser.getBalance() +" "+ toUser.getBank().getCurrency());
+
+                    System.out.println("User " + fromUser.getName() + " transfers " + amount +" "+ fromUser.getBank().getCurrency() +" to "+ toUser.getName() +
+                    " with commission " + amount * fromUser.getBank().getCommission(amount)/100 +" "+ fromUser.getBank().getCurrency());
+
+                    fromUser.setBalance(fromUser.getBalance() - amount - amount * fromUser.getBank().getCommission(amount)/100);
+                    toUser.setBalance(toUser.getBalance() + amount);
+
+                    System.out.println("User " + fromUser.getName() + ": balance = " + fromUser.getBalance() +" "+ fromUser.getBank().getCurrency());
+                    System.out.println("User " + toUser.getName() + ": balance = " + toUser.getBalance() +" "+ toUser.getBank().getCurrency());
+
+                    fromUser.getBank().setTotalCapital(fromUser.getBank().getTotalCapital() + amount * fromUser.getBank().getCommission(amount)/100);
+                } else {
+                    System.out.println("User " + toUser.getName() + " has exceeded limit of funding, limit = " + toUser.getBank().getLimitOfFunding());
+                }
             } else {
-                System.out.println("Exceeded limit of funding");
+                System.out.println("User " + fromUser.getName() + " has exceeded the limit of withdrawal, limit = " + fromUser.getBank().getLimitOfWithdrawal());
             }
         } else {
-            System.out.println("Exceeded limit of withdrawal");
+            System.out.println("User " + fromUser.getName() + " is trying to transfer negative amount to " + toUser.getName());
         }
+        System.out.println();
 
     }
 
     @Override
     public void paySalary(User user) {
 
+        System.out.println("User " + user.getName() + ": balance = " + user.getBalance() +" "+ user.getBank().getCurrency());
+        System.out.println("Paying " + user.getSalary() + " " + user.getBank().getCurrency() + " of salary to user " + user.getName());
         user.setBalance(user.getBalance() + user.getSalary());
+        System.out.println("User " + user.getName() + ": balance = " + user.getBalance() +" "+ user.getBank().getCurrency());
+        System.out.println();
     }
 }
