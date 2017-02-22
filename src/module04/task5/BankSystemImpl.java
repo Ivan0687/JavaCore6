@@ -12,7 +12,7 @@ public class BankSystemImpl implements BankSystem{
         System.out.println("User " + user.getName() + " is trying to withdraw " + amount + " " + user.getBank().getCurrency());
 
         if (user.getBalance() < (double) amount + amount * user.getBank().getCommission(amount) / 100) {
-            System.out.println("User " + user.getName() + " haven't enough money. Available amount = " +
+            System.out.println("User " + user.getName() + " don't have enough money. Available amount = " +
                     user.getBalance() / (1 + user.getBank().getCommission(amount) / 100) +" "+ user.getBank().getCurrency());
 
         } else if (amount < 0) {
