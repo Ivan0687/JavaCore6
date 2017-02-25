@@ -74,8 +74,12 @@ public class BankSystemImpl implements BankSystem{
         System.out.println("User " + fromUser.getName() + " is trying to transfer " +
                 amount + " " + fromUser.getBank().getCurrency() + " to user " + toUser.getName());
 
-        if (fromUser.getBalance() < (double) amount + amount * fromUser.getBank().getCommission(amount)/100){
-            System.out.println("User " + fromUser.getName() + " haven't enough money. Available amount = " +
+        if (fromUser.getBank().getCurrency() != toUser.getBank().getCurrency()){
+            System.out.println("Currencies isn't equal. " + fromUser.getName() + "'s currency is " + fromUser.getBank().getCurrency());
+        }
+
+        else if (fromUser.getBalance() < (double) amount + amount * fromUser.getBank().getCommission(amount)/100){
+            System.out.println("User " + fromUser.getName() + " doesn't have enough money. Available amount = " +
                     fromUser.getBalance() / (1 + fromUser.getBank().getCommission(amount)/100) +" "+ fromUser.getBank().getCurrency());
 
         } else if (amount < 0){
