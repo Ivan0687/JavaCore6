@@ -38,4 +38,9 @@ public class RoomDAO implements DAO {
 
         return null;
     }
+
+    @Override
+    public Room[] getAll() {
+        return new Room[0];
+    }
 }

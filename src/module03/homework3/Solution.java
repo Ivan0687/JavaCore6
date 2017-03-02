@@ -9,9 +9,9 @@ public class Solution {
 
     public static void main(String[] args) {
 
-        Course firstCourse = new Course(new Date("20.01.2017"), "firstCourse");
+        Course firstCourse = new Course(new Date(2017, 02, 20), "firstCourse");
         Course secondCourse = new Course("secondCourse", 500, "Second");
-        Course thirdCourse = new Course(new Date("03.02.2017"), "thirdCourse");
+        Course thirdCourse = new Course(new Date(2016, 12, 24), "thirdCourse");
         Course fourthCourse = new Course("fourthCourse", 400, "Fourth");
         Course fifthCourse = new Course("fifthCourse", 600, "Fifth");
 

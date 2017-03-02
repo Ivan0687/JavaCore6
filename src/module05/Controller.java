@@ -4,6 +4,8 @@ import module05.APIs.API;
 import module05.APIs.BookingComAPI;
 import module05.APIs.GoogleAPI;
 import module05.APIs.TripAdvisorAPI;
+import module05.DAOs.DAO;
+import module05.DAOs.DAOImplHard;
 
 import java.util.Arrays;
 
@@ -13,6 +15,8 @@ import java.util.Arrays;
 public class Controller {
 
     private API apis[] = new API[]{new BookingComAPI(), new TripAdvisorAPI(), new GoogleAPI()};
+
+    public DAO roomDAO = new DAOImplHard();
 
     public Room[] requstRooms(int price, int persons, String city, String hotel){
 
@@ -71,5 +75,28 @@ public class Controller {
     }
 
 
+    Room save(Room room){
+
+        roomDAO.save(room);
+
+        return null;
+    }
+
+    boolean delete(Room room){
+
+        return roomDAO.delete(room);
+    }
+
+    Room update(Room room){
+        roomDAO.update(room);
+        return null;
+    }
+
+    Room findById(long id){
+
+        System.out.println("Room with id=" + id + " is: " + roomDAO.findById(id));
+
+        return roomDAO.findById(id);
+    }
 
 }
