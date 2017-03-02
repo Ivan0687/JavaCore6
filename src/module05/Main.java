@@ -3,6 +3,8 @@ package module05;
 import module05.APIs.BookingComAPI;
 import module05.APIs.GoogleAPI;
 import module05.APIs.TripAdvisorAPI;
+import module05.DAOs.DAO;
+import module05.DAOs.DAOImplHard;
 
 /**
  * Created by root on 27.02.2017.
@@ -12,6 +14,7 @@ public class Main {
     public static void main(String[] args) {
 
         Controller controller = new Controller();
+
 
         Room[] rooms0 = controller.requstRooms(401, 5, "City № 5", "Hotel № 5");
 
@@ -35,7 +38,6 @@ public class Main {
         System.out.println();
 
 
-
         Room[] rooms = controller.check(new BookingComAPI(), new TripAdvisorAPI());
 
         for (Room room : rooms) {
@@ -55,7 +57,32 @@ public class Main {
         for (Room room : rooms) {
             System.out.println(room);
         }
+        System.out.println();
 
+
+
+        for (Room room : rooms) {
+            controller.save(room);
+        }
+
+        for (Room room : controller.roomDAO.getAll()) {
+            System.out.println(room);
+        }
+        System.out.println();
+
+
+
+
+        controller.findById(0);
+        controller.update(new Room(0, 600, 4, null, "Dnipro", "Kyiv"));
+        controller.findById(0);
+        controller.delete(rooms[3]);
+        controller.findById(2);
+        System.out.println();
+
+        for (Room room : controller.roomDAO.getAll()) {
+            System.out.println(room);
+        }
 
 
     }
