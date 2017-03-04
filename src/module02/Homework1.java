@@ -1,5 +1,9 @@
 package module02;
 
+import module06.ArraysUtils;
+
+import java.util.Arrays;
+
 /**
  * Created by root on 27.01.2017.
  */
@@ -7,15 +11,38 @@ public class Homework1 {
 
     public static void main(String[] args) {
 
-        int[] myArray = new int[10];
+        int[] array = new int[10];
 
-        sum(myArray);
-        min(myArray);
-        max(myArray);
-        maxPositive(myArray);
-        multiplication(myArray);
-        modulus(myArray);
-        secondLargest(myArray);
+        for (int i = 0; i < array.length; i++) {
+            array[i] = i + 1;
+        }
+
+        int sumArray = ArraysUtils.sum(array);
+        System.out.println("Sum = " + sumArray);
+
+        int min = ArraysUtils.min(array);
+        System.out.println("Min = " + min);
+
+        int max = ArraysUtils.max(array);
+        System.out.println("Max = " + max);
+
+        int maxpositive = ArraysUtils.maxPositive(array);
+        System.out.println("Max positive = " + maxpositive);
+
+        int multiplication = ArraysUtils.multiplication(array);
+        System.out.println("Multiplication = " + multiplication);
+
+        int modulus = ArraysUtils.modulus(array);
+        System.out.println("Modulus = " + modulus);
+
+        int secondLargest = ArraysUtils.secondLargest(array);
+        System.out.println("Second largest = " + secondLargest);
+
+        int[] reverseArray = ArraysUtils.reverse(array);
+        System.out.println("Reverse array = " + Arrays.toString(reverseArray));
+
+        int[] evenElements = ArraysUtils.findEvenElements(array);
+        System.out.println("Even elements = " + Arrays.toString(evenElements));
 
     }
 
@@ -23,8 +50,8 @@ public class Homework1 {
 
         int sum = 0;
 
-        for (int i : array) {
-            sum += i;
+        for (int arrayElement : array) {
+            sum += arrayElement;
         }
 
         return sum;
@@ -34,8 +61,8 @@ public class Homework1 {
 
         int min = array[0];
 
-        for (int i : array) {
-            min = min > i ? i : min;
+        for (int arrayElement : array) {
+            min = min > arrayElement ? arrayElement : min;
         }
 
         return min;
@@ -45,8 +72,8 @@ public class Homework1 {
 
         int max = array[0];
 
-        for (int i : array) {
-            max = max < i ? i : max;
+        for (int arrayElement : array) {
+            max = max < arrayElement ? arrayElement : max;
 
         }
 
@@ -57,9 +84,9 @@ public class Homework1 {
 
         int max = 0;
 
-        for (int i : array) {
-            if (i > 0)
-                max = max < i ? i : max;
+        for (int arrayElement : array) {
+            if (arrayElement > 0)
+                max = max < arrayElement ? arrayElement : max;
         }
 
         return max;
@@ -69,8 +96,8 @@ public class Homework1 {
 
         int multi = 1;
 
-        for (int i : array) {
-            multi *= i;
+        for (int arrayElement : array) {
+            multi *= arrayElement;
         }
 
         return multi;
