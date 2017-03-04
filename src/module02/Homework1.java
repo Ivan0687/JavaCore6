@@ -125,7 +125,6 @@ public class Homework1 {
                 if (array[i] > secondLargest && max > array[i])
                     secondLargest = array[i];
             }
-
         }
 
         return secondLargest;

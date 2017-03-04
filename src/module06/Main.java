@@ -10,7 +10,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        User[] users = new User[12];
+        User[] users = new User[13];
 
         users[0] = new User(User.getCount(), "Petia", "Pupkin", 200, 3651);
         users[1] = new User(User.getCount(), "John", "Doe", 250, 6519);
@@ -24,6 +24,8 @@ public class Main {
         users[9] = new User(User.getCount(), "Agent", "Smith", 1, 1000_000);
         users[10] = new User(User.getCount(), "Agent", "Brown", 1, 100_000);
         users[11] = new User(User.getCount(), "Thomas", "Anderson", 1000_000, 1);
+        users[12] = new User(User.getCount(), "Agent", "Brown", 1, 100_000);
+
 
         System.out.println("Created " + User.getCount() + " users");
         System.out.println();

@@ -71,7 +71,7 @@ public class User {
 
         User user = (User) o;
 
-        // У меня у каждого юзера свой уникальный айДи, так что проверка на id не имеет смысла
+        // У меня у каждого юзера свой уникальный айДи, так что проверка на id не имеет смысла.
         //if (id != user.id) return false;
 
         if (salary != user.salary) return false;

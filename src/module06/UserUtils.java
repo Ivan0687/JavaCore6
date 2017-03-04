@@ -19,8 +19,9 @@ public class UserUtils {
             int count = 0;
 
             if (users[i] != null) {
-                for (int i1 = i; i1 < users.length - 1; i1++) {
-                    if (users[i].equals(users[i1 + 1])) {
+
+                for (int i1 = i + 1; i1 < users.length; i1++) {
+                    if (users[i].equals(users[i1])) {
                         count++;
                         break;
                     }
@@ -60,11 +61,13 @@ public class UserUtils {
 
     public static final long[] getUsersId(User[] users){
 
-        long[] idS = new long[users.length];
+        long[] idS = new long[0];
 
         for (int i = 0; i < users.length; i++) {
-            if (users[i] != null)
-            idS[i] = users[i].getId();
+            if (users[i] != null){
+                idS = Arrays.copyOf(idS, idS.length + 1);
+                idS[idS.length - 1] = users[i].getId();
+            }
         }
 
         return idS;
