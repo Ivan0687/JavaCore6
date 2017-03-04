@@ -12,33 +12,48 @@ public class UserUtils {
 
     public static User[] uniqueUsers(User[] users){
 
-        User[] unique = new User[0];
+        User[] uniqueUsers = new User[0];
 
-        if (users.length == 1)
-            return users;
+        for (User user : users) {
+            boolean check = true;
 
-        for (int i = 0; i < users.length - 1; i++) {
+            for (User unique : uniqueUsers) {
 
-            int count = 0;
-
-            if (users[i] != null) {
-
-                for (int i1 = i + 1; i1 < users.length; i1++) {
-                    if (users[i].equals(users[i1])) {
-                        count++;
-                        break;
-                    }
-                }
-
-                if (count == 0)
-                    unique = addUsersToArray(unique, users[i]);
+                if (user.equals(unique))
+                    check = false;
             }
+
+            if (check)
+                uniqueUsers = addUsersToArray(uniqueUsers, user);
         }
 
-        if (users[users.length - 1] != null)
-            unique = addUsersToArray(unique, users[users.length - 1]);
+        
 
-        return unique;
+//        if (users.length == 1)
+//            return users;
+//
+//        for (int i = 0; i < users.length - 1; i++) {
+//
+//            int count = 0;
+//
+//            if (users[i] != null) {
+//
+//                for (int i1 = i + 1; i1 < users.length; i1++) {
+//                    if (users[i].equals(users[i1])) {
+//                        count++;
+//                        break;
+//                    }
+//                }
+//
+//                if (count == 0)
+//                    uniqueUsers = addUsersToArray(uniqueUsers, users[i]);
+//            }
+//        }
+//
+//        if (users[users.length - 1] != null)
+//            uniqueUsers = addUsersToArray(uniqueUsers, users[users.length - 1]);
+
+        return uniqueUsers;
     }
 
     public static User[] usersWithContitionalBalance(User[] users, int balance){
