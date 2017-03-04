@@ -14,6 +14,9 @@ public class UserUtils {
 
         User[] unique = new User[0];
 
+        if (users.length == 1)
+            return users;
+
         for (int i = 0; i < users.length - 1; i++) {
 
             int count = 0;
