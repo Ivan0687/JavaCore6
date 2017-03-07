@@ -1,4 +1,4 @@
-package module06;
+package module06.arrays;
 
 import java.util.Arrays;
 
@@ -10,7 +10,7 @@ public final class ArraysUtils {
     private ArraysUtils() {
     }
 
-    public static int sum (int array[]){
+    public static int sum(int array[]) {
 
         int sum = 0;
 
@@ -21,7 +21,7 @@ public final class ArraysUtils {
         return sum;
     }
 
-    public static int min (int array[]){
+    public static int min(int array[]) {
 
         int min = array[0];
 
@@ -32,7 +32,7 @@ public final class ArraysUtils {
         return min;
     }
 
-    public static int max (int array[]){
+    public static int max(int array[]) {
 
         int max = array[0];
 
@@ -44,7 +44,7 @@ public final class ArraysUtils {
         return max;
     }
 
-    public static int maxPositive (int array[]){
+    public static int maxPositive(int array[]) {
 
         int max = 0;
 
@@ -56,7 +56,7 @@ public final class ArraysUtils {
         return max;
     }
 
-    public static int multiplication (int array[]){
+    public static int multiplication(int array[]) {
 
         int multi = 1;
 
@@ -67,12 +67,12 @@ public final class ArraysUtils {
         return multi;
     }
 
-    public static int modulus (int array[]){
+    public static int modulus(int array[]) {
 
         return array[0] % array[array.length - 1];
     }
 
-    public static int secondLargest (int array[]){
+    public static int secondLargest(int array[]) {
 
         if (array.length == 1)
             return array[0];
@@ -82,7 +82,7 @@ public final class ArraysUtils {
 
         for (int i = 2; i < array.length; i++) {
 
-            if (array[i]> max){
+            if (array[i] > max) {
                 secondLargest = max;
                 max = array[i];
 
@@ -93,11 +93,11 @@ public final class ArraysUtils {
     }
 
 
-    public static int[] reverse(int[] array){
+    public static int[] reverse(int[] array) {
 
         int[] reverseArray = new int[array.length];
 
-        for (int i = 0; i <= array.length/2; i++) {
+        for (int i = 0; i <= array.length / 2; i++) {
 
             reverseArray[i] = array[array.length - i - 1];
             reverseArray[array.length - i - 1] = array[i];
@@ -106,16 +106,14 @@ public final class ArraysUtils {
         return reverseArray;
     }
 
-    public static int[] findEvenElements(int[] array){
+    public static int[] findEvenElements(int[] array) {
 
-        int[] evens = new int[1];
-        int count = 0;
+        int[] evens = new int[0];
 
         for (int anArray : array) {
 
             if (anArray % 2 == 0) {
-                count++;
-                evens = Arrays.copyOf(evens, count);
+                evens = Arrays.copyOf(evens, evens.length + 1);
                 evens[evens.length - 1] = anArray;
             }
         }
