@@ -1,9 +1,9 @@
-package module06;
+package module06.users;
 
 /**
  * Created by root on 04.03.2017.
  */
-public class User {
+public final class User {
 
     private long id;
     private String firstName;
@@ -12,8 +12,20 @@ public class User {
     private int balance;
 
     private static long count;
-    {
+
+    public User(long id, String firstName, String lastName, int salary, int balance) {
+
+//    можно id вообще убрать из конструктора и делать так
+//        count++;
+//        id = count;
+
+//    но так как в задании все поля нужны то делаем так
         count++;
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.salary = salary;
+        this.balance = balance;
     }
 
     public static long getCount() {
@@ -28,41 +40,23 @@ public class User {
         return firstName;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
     public String getLastName() {
         return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
     }
 
     public int getSalary() {
         return salary;
     }
 
-    public void setSalary(int salary) {
-        this.salary = salary;
+    public void paySalary() {
+        balance+= salary;
     }
 
     public int getBalance() {
         return balance;
     }
 
-    public void setBalance(int balance) {
-        this.balance = balance;
-    }
 
-    public User(long id, String firstName, String lastName, int salary, int balance) {
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.salary = salary;
-        this.balance = balance;
-    }
 
     @Override
     public boolean equals(Object o) {

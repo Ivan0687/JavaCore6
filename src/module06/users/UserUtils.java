@@ -1,4 +1,4 @@
-package module06;
+package module06.users;
 
 import java.util.Arrays;
 
@@ -7,28 +7,34 @@ import java.util.Arrays;
  */
 public class UserUtils {
 
-    public UserUtils() {
-    }
-
-    public static User[] uniqueUsers(User[] users){
+    public static User[] uniqueUsers(User[] users) {
 
         User[] uniqueUsers = new User[0];
 
         for (User user : users) {
-            boolean check = true;
+            if (user != null) {
+                boolean check = true;
 
-            for (User unique : uniqueUsers) {
+                for (User unique : uniqueUsers) {
 
-                if (user.equals(unique))
-                    check = false;
+                    if (user.equals(unique))
+                        check = false;
+                }
+
+                if (check)
+                    uniqueUsers = addUsersToArray(uniqueUsers, user);
             }
-
-            if (check)
-                uniqueUsers = addUsersToArray(uniqueUsers, user);
         }
+        return uniqueUsers;
+    }
 
-        
 
+    // очень длинный и запутанный код, который добавляет последнего из одинаковых юзеров
+
+//    public static User[] uniqueUsers(User[] users) {
+//
+//        User[] uniqueUsers = new User[0];
+//
 //        if (users.length == 1)
 //            return users;
 //
@@ -44,19 +50,17 @@ public class UserUtils {
 //                        break;
 //                    }
 //                }
-//
 //                if (count == 0)
 //                    uniqueUsers = addUsersToArray(uniqueUsers, users[i]);
 //            }
 //        }
-//
 //        if (users[users.length - 1] != null)
 //            uniqueUsers = addUsersToArray(uniqueUsers, users[users.length - 1]);
+//
+//        return uniqueUsers;
+//    }
 
-        return uniqueUsers;
-    }
-
-    public static User[] usersWithContitionalBalance(User[] users, int balance){
+    public static User[] usersWithConditionalBalance(User[] users, int balance) {
 
         User[] conditionalUsers = new User[0];
 
@@ -68,21 +72,21 @@ public class UserUtils {
         return conditionalUsers;
     }
 
-    public static final User[] paySalaryToUsers(User[] users){
+    public static final User[] paySalaryToUsers(User[] users) {
 
         for (User user : users) {
             if (user != null)
-            user.setBalance(user.getBalance() + user.getSalary());
+                user.paySalary();
         }
         return users;
     }
 
-    public static final long[] getUsersId(User[] users){
+    public static final long[] getUsersId(User[] users) {
 
         long[] idS = new long[0];
 
         for (int i = 0; i < users.length; i++) {
-            if (users[i] != null){
+            if (users[i] != null) {
                 idS = Arrays.copyOf(idS, idS.length + 1);
                 idS[idS.length - 1] = users[i].getId();
             }
@@ -91,10 +95,10 @@ public class UserUtils {
         return idS;
     }
 
-    public static User[] deleteEmptyUsers(User[] users){
+    public static User[] deleteEmptyUsers(User[] users) {
 
         for (int i = 0; i < users.length; i++) {
-            if (users[i] == null){
+            if (users[i] == null) {
                 System.arraycopy(users, i + 1, users, i, users.length - i - 1);
                 users = Arrays.copyOfRange(users, 0, users.length - 1);
             }

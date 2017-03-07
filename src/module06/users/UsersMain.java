@@ -1,12 +1,11 @@
-package module06;
+package module06.users;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 
 /**
  * Created by root on 04.03.2017.
  */
-public class Main {
+public class UsersMain {
 
     public static void main(String[] args) {
 
@@ -34,7 +33,8 @@ public class Main {
         Unique users
          */
         users[0] = null;
-        User[] uniqueUsers =  UserUtils.uniqueUsers(users);
+        users[5] = null;
+        User[] uniqueUsers = UserUtils.uniqueUsers(users);
 
         System.out.println("Unique users: ");
         for (User uniqueUser : uniqueUsers) {
@@ -45,10 +45,10 @@ public class Main {
         /*
         Conditional balance
          */
-        User[] usersWithContitionalBalance = UserUtils.usersWithContitionalBalance(users, 1000000);
+        User[] usersWithConditionalBalance = UserUtils.usersWithConditionalBalance(users, 100000);
 
-        System.out.println("Users with balance = " + usersWithContitionalBalance[0].getBalance() + ":");
-        for (User user : usersWithContitionalBalance) {
+        System.out.println("Users with balance = " + usersWithConditionalBalance[0].getBalance() + ":");
+        for (User user : usersWithConditionalBalance) {
             System.out.println(user);
         }
         System.out.println();
@@ -76,7 +76,6 @@ public class Main {
         /*
         Delete users
          */
-        users[5] = null;
         users[7] = null;
         users = UserUtils.deleteEmptyUsers(users);
 

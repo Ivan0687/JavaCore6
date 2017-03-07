@@ -1,6 +1,6 @@
 package module02;
 
-import module06.ArraysUtils;
+import module06.arrays.ArraysUtils;
 
 import java.util.Arrays;
 
