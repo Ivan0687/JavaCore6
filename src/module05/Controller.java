@@ -47,7 +47,7 @@ public class Controller {
 
         if (requstRooms.size() == 0)
             System.out.println("Room with price: " + price + ", persons: " + persons + ",city: " + city + ", hotel: " + hotel + " is not found");
-        
+
         return requstRooms;
     }
 
