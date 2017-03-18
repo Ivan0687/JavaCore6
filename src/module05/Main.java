@@ -6,6 +6,8 @@ import module05.APIs.TripAdvisorAPI;
 import module05.DAOs.DAO;
 import module05.DAOs.DAOImplHard;
 
+import java.util.ArrayList;
+
 /**
  * Created by root on 27.02.2017.
  */
@@ -15,22 +17,24 @@ public class Main {
 
         Controller controller = new Controller();
 
+        DAO dao = new DAOImplHard();
 
-        Room[] rooms0 = controller.requstRooms(401, 5, "City № 5", "Hotel № 5");
+
+        ArrayList<Room> rooms0 = controller.requstRooms(401, 5, "City № 5", "Hotel № 5");
 
         for (Room room : rooms0) {
             System.out.println(room);
         }
         System.out.println();
 
-        Room[] rooms1 = controller.requstRooms(275, 4, "City № 4", "Hotel № 5");
+        ArrayList<Room> rooms1 = controller.requstRooms(275, 4, "City № 4", "Hotel № 5");
 
         for (Room room : rooms1) {
             System.out.println(room);
         }
         System.out.println();
 
-        Room[] rooms2 = controller.requstRooms(1000, 4, "City № 4", "Hotel № 4");
+        ArrayList<Room> rooms2 = controller.requstRooms(1000, 4, "City № 4", "Hotel № 4");
 
         for (Room room : rooms2) {
             System.out.println(room);
@@ -38,7 +42,8 @@ public class Main {
         System.out.println();
 
 
-        Room[] rooms = controller.check(new BookingComAPI(), new TripAdvisorAPI());
+
+        ArrayList<Room> rooms = controller.check(new BookingComAPI(), new TripAdvisorAPI());
 
         for (Room room : rooms) {
             System.out.println(room);
@@ -62,10 +67,10 @@ public class Main {
 
 
         for (Room room : rooms) {
-            controller.save(room);
+            dao.save(room);
         }
 
-        for (Room room : controller.roomDAO.getAll()) {
+        for (Room room : dao.getAll()) {
             System.out.println(room);
         }
         System.out.println();
@@ -73,14 +78,14 @@ public class Main {
 
 
 
-        controller.findById(0);
-        controller.update(new Room(0, 600, 4, null, "Dnipro", "Kyiv"));
-        controller.findById(0);
-        controller.delete(rooms[3]);
-        controller.findById(2);
+        dao.findById(0);
+        dao.update(new Room(0, 600, 4, null, "Dnipro", "Kyiv"));
+        dao.findById(0);
+        dao.delete(rooms.get(3));
+        dao.findById(2);
         System.out.println();
 
-        for (Room room : controller.roomDAO.getAll()) {
+        for (Room room : dao.getAll()) {
             System.out.println(room);
         }
 

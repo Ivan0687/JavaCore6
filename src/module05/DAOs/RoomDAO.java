@@ -2,6 +2,8 @@ package module05.DAOs;
 
 import module05.Room;
 
+import java.util.ArrayList;
+
 /**
  * Created by root on 25.02.2017.
  */
@@ -40,7 +42,7 @@ public class RoomDAO implements DAO {
     }
 
     @Override
-    public Room[] getAll() {
-        return new Room[0];
+    public ArrayList<Room> getAll() {
+        return new ArrayList<Room>();
     }
 }

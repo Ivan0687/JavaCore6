@@ -2,22 +2,26 @@ package module05.DAOs;
 
 import module05.Room;
 
+import java.util.ArrayList;
+
 /**
  * Created by root on 02.03.2017.
  */
-public class DAOImplHard implements DAO{
+public class DAOImplHard implements DAO {
 
-    Room[] roomDB = new Room[10];
+    ArrayList<Room> roomDB = new ArrayList<>();
 
     @Override
     public Room save(Room room) {
 
-        for (int i = 0; i < roomDB.length; i++) {
-            if (roomDB[i] == null) {
-                roomDB[i] = room;
-                break;
-            }
-        }
+        roomDB.add(room);
+
+//        for (int i = 0; i < roomDB.length; i++) {
+//            if (roomDB[i] == null) {
+//                roomDB[i] = room;
+//                break;
+//            }
+//        }
 
         return null;
     }
@@ -25,14 +29,16 @@ public class DAOImplHard implements DAO{
     @Override
     public boolean delete(Room room) {
 
-        for (int i = 0; i < roomDB.length; i++) {
-            if (room != null)
-                if (room.equals(roomDB[i])) {
-                    System.out.println("Room " + roomDB[i] + " was deleted");
-                    roomDB[i] = null;
-                    return true;
-            }
-        }
+        roomDB.remove(room);
+
+//        for (int i = 0; i < roomDB.length; i++) {
+//            if (room != null)
+//                if (room.equals(roomDB[i])) {
+//                    System.out.println("Room " + roomDB[i] + " was deleted");
+//                    roomDB[i] = null;
+//                    return true;
+//            }
+//        }
 
         return false;
     }
@@ -40,13 +46,17 @@ public class DAOImplHard implements DAO{
     @Override
     public Room update(Room room) {
 
-        for (int i = 0; i < roomDB.length; i++) {
-            if (roomDB[i] != null)
-                if (roomDB[i].getId() == room.getId()){
-                    roomDB[i] = room;
-                    System.out.println("Room with id: " + room.getId() + " was updated");
-            }
-        }
+        if (roomDB.contains(room))
+            roomDB.set(roomDB.indexOf(room), room);
+        System.out.println("Room with id: " + room.getId() + " was updated");
+
+//        for (int i = 0; i < roomDB.length; i++) {
+//            if (roomDB[i] != null)
+//                if (roomDB[i].getId() == room.getId()){
+//                    roomDB[i] = room;
+//                    System.out.println("Room with id: " + room.getId() + " was updated");
+//            }
+//        }
 
         return null;
     }
@@ -56,15 +66,17 @@ public class DAOImplHard implements DAO{
 
         for (Room room : roomDB) {
             if (room != null)
-            if (room.getId() == id)
-                return room;
+                if (room.getId() == id)
+                    return room;
+            System.out.println("Room with id=" + id + " is: " + room);
+
         }
 
         return null;
     }
 
     @Override
-    public Room[] getAll() {
+    public ArrayList<Room> getAll() {
         return roomDB;
     }
 }

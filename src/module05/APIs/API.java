@@ -2,13 +2,15 @@ package module05.APIs;
 
 import module05.Room;
 
+import java.util.ArrayList;
+
 /**
  * Created by root on 17.02.2017.
  */
 public interface API {
 
-    Room[] findRooms(int price, int persons, String city, String hotel);
+    ArrayList<Room> findRooms(int price, int persons, String city, String hotel);
 
-    Room[] getRooms();
+    ArrayList<Room> getRooms();
 
 }
