@@ -46,6 +46,7 @@ public class Order implements Comparable<Order> {
 
         Order order = (Order) o;
 
+        if (id != order.id) return true;
         if (price != order.price) return false;
         if (currency != order.currency) return false;
         if (!itemName.equals(order.itemName)) return false;
