@@ -48,7 +48,7 @@ public class User implements Comparable<User> {
 
         User user = (User) o;
 
-        if (id != user.id) return true;
+        if (id == user.id) return true;
         if (balance != user.balance) return false;
         if (!firstName.equals(user.firstName)) return false;
         if (!lastName.equals(user.lastName)) return false;
