@@ -47,7 +47,7 @@ public class MainTreeSet {
         //print Order with largest price using only one set method - get
 
         System.out.println("Order with largest price is ");
-        System.out.println(ordersTreeSet.pollLast());
+        System.out.println(ordersTreeSet.last());
         System.out.println();
 
         // delete orders where currency is USD using Iterator
