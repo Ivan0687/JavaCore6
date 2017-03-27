@@ -16,16 +16,19 @@ public class Main {
         Food tea = new Food("Tea", Country.UK, 150);
         Food oranges = new Food("Orange", Country.SPAIN, 25);
         Food salmon = new Food("Salmon", Country.NORWAY, 15);
+        Food wine = new Food("Wine", Country.FRANCE, 500);
 
         IManageSystem<Food> foodManageSystem = new IManageSystemFood();
+
+        foodManageSystem.save(oranges);
 
         foodManageSystem.save(salo, 65.6);
         foodManageSystem.save(salmon, 250.52);
         foodManageSystem.save(pasta, 50.3);
+        foodManageSystem.save(wine);
         foodManageSystem.save(rice, 30.8);
         foodManageSystem.save(cheese, 150.5);
         foodManageSystem.save(tea, 25.4);
-        foodManageSystem.save(oranges);
 
         System.out.println(foodManageSystem.save(kartoha, 6.6) + " was saved");
         System.out.println();
@@ -51,6 +54,8 @@ public class Main {
 
         foodManageSystem.printProductsSortedByName();
         foodManageSystem.printProductsSortedByPrice();
+
+
     }
 
 }

@@ -5,7 +5,7 @@ import java.util.*;
 /**
  * Created by root on 25.03.2017.
  */
-public class IManageSystemFood <T extends Food> implements IManageSystem<T> {
+public class IManageSystemFood<T extends Food> implements IManageSystem<T> {
 
     private Map<T, Double> database = new HashMap<>();
 
@@ -81,22 +81,29 @@ public class IManageSystemFood <T extends Food> implements IManageSystem<T> {
     @Override
     public void printProductsSortedByPrice() {
 
-        List<Map.Entry<T, Double>> databaseByPrices = new ArrayList<>();
+        List<Map.Entry<T, Double>> nullPrices = new ArrayList();
+        List<Map.Entry<T, Double>> notNullPrices = new ArrayList();
 
-        databaseByPrices.addAll(database.entrySet());
+        for (Map.Entry<T, Double> tDoubleEntry : database.entrySet()) {
+            if (tDoubleEntry.getValue() == null)
+                nullPrices.add(tDoubleEntry);
+            else
+                notNullPrices.add(tDoubleEntry);
+        }
 
-        databaseByPrices.sort(new Comparator<Map.Entry<T, Double>>() {
+        notNullPrices.sort(new Comparator<Map.Entry<T, Double>>() {
             @Override
             public int compare(Map.Entry<T, Double> o1, Map.Entry<T, Double> o2) {
-                if (o1.getValue() != null)
-                return o1.getValue().compareTo(o2.getValue());
-                return -1;
+                    return o1.getValue().compareTo(o2.getValue());
             }
         });
 
         System.out.println("Products sorted by prices:");
-        for (Map.Entry<T, Double> databaseByPrice : databaseByPrices) {
-            System.out.println(databaseByPrice.getKey() + ": price = " + databaseByPrice.getValue());
+        for (Map.Entry<T, Double> nullPrice : nullPrices) {
+            System.out.println(nullPrice.getKey() + ": price = " + nullPrice.getValue());
+        }
+        for (Map.Entry<T, Double> notNullPrice : notNullPrices) {
+            System.out.println(notNullPrice.getKey() + ": price = " + notNullPrice.getValue());
         }
         System.out.println();
     }
