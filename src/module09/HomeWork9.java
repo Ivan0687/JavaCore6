@@ -106,9 +106,9 @@ public class HomeWork9<T> {
     //   -разделите список на 2 списка - заказы в долларах и в гривнах
     public static <T extends Order> Map<Order.Currency, List<T>> separateByCurrencies(List<T> list, Order.Currency currency1, Order.Currency currency2) {
         return list.stream()
-                .filter(order -> order.getCurrency().equals(currency1) || order.getCurrency().equals(currency2))
-//                .filter(((Predicate<T>) order -> order.getCurrency().equals(currency1))
-//                        .and(order -> order.getCurrency().equals(currency2)))
+//                .filter(order -> order.getCurrency().equals(currency1) || order.getCurrency().equals(currency2))
+                .filter(((Predicate<T>) order -> order.getCurrency().equals(currency1))
+                        .or(order -> order.getCurrency().equals(currency2)))
                 .collect(Collectors.groupingBy(order -> order.getCurrency()));
     }
 
