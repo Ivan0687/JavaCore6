@@ -79,6 +79,24 @@ public class MainList {
 
 
     public static ArrayList<Order> createArrayList() {
+        ArrayList<User> usersArrayList = createUsersList();
+
+        ArrayList<Order> ordersArrayList = new ArrayList<>();
+
+        ordersArrayList.add(new Order(1600, Order.Currency.USD, "IPhone 7", "Apple store", usersArrayList.get(0)));
+        ordersArrayList.add(new Order(1, Order.Currency.RUB, "Lada kalina", "Na doroge", usersArrayList.get(1)));
+        ordersArrayList.add(new Order(50, Order.Currency.UAH, "Samogon", "Kym", usersArrayList.get(2)));
+        ordersArrayList.add(new Order(3, Order.Currency.USD, "Hot dog", "Seller", usersArrayList.get(3)));
+        ordersArrayList.add(new Order(1, Order.Currency.USD, "Crowbar", "Black Mesa", usersArrayList.get(4)));
+        ordersArrayList.add(new Order(100, Order.Currency.EUR, "Wand", "Olivanders Shop", usersArrayList.get(5)));
+        ordersArrayList.add(new Order(100, Order.Currency.EUR, "Wand", "Olivanders Shop", usersArrayList.get(6)));
+        ordersArrayList.add(new Order(50, Order.Currency.UAH, "Item", "Shop", usersArrayList.get(7)));
+        ordersArrayList.add(new Order(50, Order.Currency.RUB, "Vodka", "Larek", usersArrayList.get(8)));
+        ordersArrayList.add(new Order(50, Order.Currency.RUB, "Vodka", "Larek", usersArrayList.get(9)));
+        return ordersArrayList;
+    }
+
+    public static ArrayList<User> createUsersList() {
         ArrayList<User> usersArrayList = new ArrayList<>();
 
         usersArrayList.add(new User("John", "Doe", "New York", 6000));
@@ -91,20 +109,7 @@ public class MainList {
         usersArrayList.add(new User("Name", "Last Name", "City", 500));
         usersArrayList.add(new User("Ivan", "Ivanow", "Zazhopinsk", 300));
         usersArrayList.add(new User("Petr", "Petrov", "Zazhopinsk", 200));
-
-        ArrayList<Order> ordersArrayList = new ArrayList<>();
-
-        ordersArrayList.add(new Order(1600, Order.Currency.USD, "IPhone 7", "Apple store", usersArrayList.get(0)));
-        ordersArrayList.add(new Order(1, Order.Currency.RUB, "Lada kalina", "Na doroge", usersArrayList.get(1)));
-        ordersArrayList.add(new Order(50, Order.Currency.UAH, "Samogon", "Kym", usersArrayList.get(2)));
-        ordersArrayList.add(new Order(3, Order.Currency.USD, "Hot dog", "Seller", usersArrayList.get(3)));
-        ordersArrayList.add(new Order(1, Order.Currency.USD, "Crowbar", "Black Mesa", usersArrayList.get(4)));
-        ordersArrayList.add(new Order(100, Order.Currency.EUR, "Wand", "Olivanders Shop", usersArrayList.get(5)));
-        ordersArrayList.add(new Order(100, Order.Currency.EUR, "Wand", "Olivanders Shop", usersArrayList.get(6)));
-        ordersArrayList.add(new Order(50, Order.Currency.UAH, "Item", "Shop", usersArrayList.get(7)));
-        ordersArrayList.add(new Order(50, Order.Currency.RUB, "Vodka", "Larek", usersArrayList.get(9)));
-        ordersArrayList.add(new Order(50, Order.Currency.RUB, "Vodka", "Larek", usersArrayList.get(9)));
-        return ordersArrayList;
+        return usersArrayList;
     }
 
     public static void printCollection(Collection collection) {

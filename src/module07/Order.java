@@ -16,7 +16,7 @@ public class Order implements Comparable<Order> {
     private User user;
     private static long countOrders;
 
-    enum Currency {EUR, USD, UAH, RUB}
+    public enum Currency {EUR, USD, UAH, RUB}
 
 
     public Order(int price, Currency currency, String itemName, String shopIdentificator, User user) {
