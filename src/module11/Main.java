@@ -15,25 +15,25 @@ public class Main {
     public static void main(String[] args) {
 
         // Task 1
-        System.out.println(Task1.replacer(mapToReplace()));
+        System.out.println(Homework11.replacer("string3", mapToReplace()));
         System.out.println();
 
         // Task 2
-        System.out.println(Task2.fileContentReplacer(mapToReplace()));
+        System.out.println(Homework11.fileContentReplacer("string3", mapToReplace()));
 
         // Task 3
-        Task3.fileContentMerger(mapToReplace());
+        System.out.println(Homework11.fileContentMerger("string3", mapToReplace()));
 
 
         // Task 4
-//        String word = "пробужденье";
-//        try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
-//            System.out.println("Enter word to check");
-//            word = reader.readLine();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        System.out.println("The word " + word + " occurs " + Task4.checkWord(word) + " times in file");
+        String word = "пробужденье";
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
+            System.out.println("Enter word to check");
+            word = reader.readLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println("The word " + word + " occurs " + Homework11.checkWord("poem.txt", word) + " times in file");
 
     }
 

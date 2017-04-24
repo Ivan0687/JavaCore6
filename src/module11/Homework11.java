@@ -83,7 +83,38 @@ public class Homework11 {
             System.out.println("Some I/O Exception");
         }
         return lines;
+
+
     }
+
+    // Без трая с ресурсами
+
+    public static List<String> getLinesFromFileClassic(String pathname) {
+
+        List<String> lines = null;
+        FileReader fileReader = null;
+        BufferedReader bufferedReader = null;
+        try  {
+            fileReader = new FileReader(pathname);
+            bufferedReader = new BufferedReader(fileReader);
+            lines = bufferedReader.lines().collect(Collectors.toList());
+        } catch (FileNotFoundException e) {
+            System.out.println("File " + pathname + " is not found");
+        } finally {
+            try {
+                if (fileReader != null)
+                    fileReader.close();
+                if (bufferedReader != null)
+                    bufferedReader.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return lines;
+
+
+    }
+
 
     public static List<String> replaceWordsInLines(List<String> lines, Map<String, String> map) {
 
